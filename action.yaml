@@ -1,10 +1,13 @@
-name: 'Install nsis plugin'
-description: 'Install nsis plugin'
+name: Install nsis plugin
+description: Install nsis plugin
+branding:
+  icon: check
+  color: white
 inputs:
   list:
-    description: 'nsis plugin name list'
+    description: nsis plugin name list
     required: true
 runs:
-  using: "composite"
+  using: composite
   steps:
     - run: ./index.ps1 ${{ inputs.list }}
