@@ -1,4 +1,5 @@
 name: 'Install nsis plugin'
+description: 'Install nsis plugin'
 inputs:
   list:
     description: 'nsis plugin name list'
