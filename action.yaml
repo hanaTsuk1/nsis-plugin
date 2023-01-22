@@ -1,0 +1,9 @@
+name: 'Install nsis plugin'
+inputs:
+  list:
+    description: 'nsis plugin name list'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ./index.ps1 ${{ inputs.list }}
