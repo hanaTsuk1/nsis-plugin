@@ -11,3 +11,4 @@ runs:
   using: composite
   steps:
     - run: ./index.ps1 ${{ inputs.list }}
+      shell: pwsh
