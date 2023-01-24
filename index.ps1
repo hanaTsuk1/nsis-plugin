@@ -11,7 +11,7 @@ for ($i = 0; $i -lt $pluginArray.Count; $i++) {
 }
 
 # https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
-$makensisPath = "C:\Program Files (x86)\NSIS\makensis.exe"
+$makensisPath = "${env:ProgramFiles(x86)}\NSIS\makensis.exe"
 
 $root = (Get-Item $makensisPath).Directory.FullName
 $nsisIncludePath = Join-Path -Path $root -ChildPath "Include"
