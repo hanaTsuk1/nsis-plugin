@@ -10,34 +10,10 @@ for ($i = 0; $i -lt $pluginArray.Count; $i++) {
   }
 }
 
-$makensisPath = ""
+# https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
+$makensisPath = "C:\Program Files (x86)\NSIS\makensis.exe"
 
-try {
-  $makensisPath = Get-Command makensis -Syntax -ErrorAction Stop
-}
-catch {
-  throw "makensis command not found"
-}
-
-$nsisVersion = makensis /VERSION
-$major = $nsisVersion[1]
-
-if ($major -lt 3) {
-  throw "only support nsis 3"
-}
-
-if (!$makensisPath.Contains("Bin")) {
-  if ($makensisPath -like "*\scoop\shims\*") {
-    $scoopRoot = (Get-Item $makensisPath).Directory.parent.FullName
-    $makensisPath = Join-Path -Path $scoopRoot -ChildPath "apps\nsis\current\Bin\makensis.exe"
-    $makensisPath
-  }
-  else {
-    throw "unable to find the specific location of plugins installation ($makensisPath)"
-  }
-}
-
-$root = (Get-Item $makensisPath).Directory.parent.FullName
+$root = (Get-Item $makensisPath).Directory.FullName
 $nsisIncludePath = Join-Path -Path $root -ChildPath "Include"
 $nsisPluginsANSIPath = Join-Path -Path $root -ChildPath "Plugins\x86-ansi"
 $nsisPluginsUNICODEPath = Join-Path -Path $root -ChildPath "Plugins\x86-unicode"
