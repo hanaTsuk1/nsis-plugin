@@ -10,5 +10,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ./index.ps1 ${{ inputs.list }}
+    - run: ${{ github.action_path }}/index.ps1 ${{ inputs.list }}
       shell: pwsh
